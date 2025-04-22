@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchDoctors(limit = null, container) {
-    let url = "http://127.0.0.1:8000/doctor/doctors/";
+    let url = "https://smart-care-backend-hgly.onrender.com/doctor/doctors/";
     if (limit) url += `?limit=${limit}`;
 
     console.log("🔗 Fetching doctors from:", url);
@@ -50,8 +50,8 @@ function fetchDoctors(limit = null, container) {
                 }
 
                 let designation = doctor.designation.length > 0 ? doctor.designation[0].name : "General Doctor";
-                let specialization = doctor.specialization.length > 0 
-                    ? doctor.specialization.map(s => s.name).join(", ") 
+                let specialization = doctor.specialization.length > 0
+                    ? doctor.specialization.map(s => s.name).join(", ")
                     : "No Specialization";
                 let imageUrl = doctor.image_url || "images/default.jpg";
 
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    fetch(`http://127.0.0.1:8000/doctor/doctors/${doctorId}/`)
+    fetch(`https://smart-care-backend-hgly.onrender.com/doctor/doctors/${doctorId}/`)
         .then(response => response.json())
         .then(doctor => {
             console.log("📜 Doctor Details:", doctor);
@@ -110,10 +110,10 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("doctor-image").src = doctor.image_url || "images/default.jpg";
             document.getElementById("doctor-name").textContent = `${doctor.first_name} ${doctor.last_name}`;
             document.getElementById("doctor-designation").textContent = doctor.designation.length > 0 ? doctor.designation[0].name : "General Doctor";
-            
+
             const specializationContainer = document.getElementById("doctor-specialization");
             specializationContainer.innerHTML = ""; // Clear previous content
-            
+
             if (doctor.specialization.length > 0) {
                 doctor.specialization.forEach(specialty => {
                     let badge = document.createElement("span");
@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 specializationContainer.innerHTML = `<span class="specialization-badge">No Specialization</span>`;
             }
-            
+
             document.getElementById("doctor-description").textContent = doctor.description;
             document.getElementById("doctor-fee").textContent = doctor.fee;
             document.getElementById("doctor-phone").textContent = doctor.phone_number;
