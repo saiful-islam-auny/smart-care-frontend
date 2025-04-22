@@ -56,7 +56,7 @@ function fetchDoctors(limit = null, container) {
                 let imageUrl = doctor.image_url || "images/default.jpg";
 
                 const doctorHTML = `
-                    <div class="col-md-4 col-lg-3 d-flex align-items-stretch">
+                    <div class="col-md-4 col-lg-3 d-flex justify-content-center">
                         <div class="card doctor-card mb-4" data-id="${doctor.id}">
                             <div class="card-img" style="background-image: url('${imageUrl}');"></div>
                             <div class="card-body text-center">
