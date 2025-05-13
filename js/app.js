@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchDoctors(limit = null, container) {
-    let url = "https://smart-care-backend-hgly.onrender.com/doctor/doctors/";
+    let url = "https://smart-care-backend-waze.onrender.com/doctor/doctors/";
     if (limit) url += `?limit=${limit}`;
 
     console.log("🔗 Fetching doctors from:", url);
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    fetch(`https://smart-care-backend-hgly.onrender.com/doctor/doctors/${doctorId}/`)
+    fetch(`https://smart-care-backend-waze.onrender.com/doctor/doctors/${doctorId}/`)
         .then(response => response.json())
         .then(doctor => {
             console.log("📜 Doctor Details:", doctor);
